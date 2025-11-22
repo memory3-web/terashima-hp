@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブログ | 寺嶋農園</title>
+    <meta name="description" content="寺嶋農園のブログです。農園の日常や栽培の様子、お知らせなどを発信しています。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <h1 class="logo"><a href="index.html">寺嶋農園</a></h1>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#about">農園について</a></li>
+                    <li><a href="index.html#products">商品紹介</a></li>
+                    <li><a href="index.html#price">価格・送料</a></li>
+                    <li><a href="blog.html" class="active">ブログ</a></li>
+                    <li><a href="index.html#faq">よくある質問</a></li>
+                    <li><a href="index.html#order" class="btn-nav">ご注文はこちら</a></li>
+                </ul>
+                <button class="mobile-menu-btn" aria-label="メニューを開く">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <nav>
+            <ul>
+                <li><a href="index.html#about">農園について</a></li>
+                <li><a href="index.html#products">商品紹介</a></li>
+                <li><a href="index.html#price">価格・送料</a></li>
+                <li><a href="blog.html">ブログ</a></li>
+                <li><a href="index.html#faq">よくある質問</a></li>
+                <li><a href="index.html#order">ご注文はこちら</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Page Title -->
+    <div class="page-title">
+        <div class="container">
+            <h2>ブログ</h2>
+            <p>農園の日常や栽培の様子をお届けします</p>
+        </div>
+    </div>
+
+    <!-- Blog List Section -->
+    <section class="blog-list section-padding">
+        <div class="container">
+            <div id="blog-container" class="blog-grid">
+                <!-- Blog posts will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>寺嶋農園</h2>
+                    <p>信州の自然が育てた、まっすぐで美味しいサンふじ</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="index.html#about">農園について</a></li>
+                        <li><a href="index.html#products">商品紹介</a></li>
+                        <li><a href="index.html#price">価格・送料</a></li>
+                        <li><a href="blog.html">ブログ</a></li>
+                        <li><a href="index.html#faq">よくある質問</a></li>
+                        <li><a href="privacy.html">プライバシーポリシー</a></li>
+                        <li><a href="index.html#order">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Terashima Farm. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/blog_data.js"></script>
+    <script src="js/blog.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
