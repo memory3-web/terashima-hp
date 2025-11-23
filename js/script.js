@@ -1,15 +1,15 @@
-document.addEventListener('DOMContentLoaded', function() {
-    
+document.addEventListener('DOMContentLoaded', function () {
+
     /* Mobile Menu Toggle */
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const mobileMenu = document.querySelector('.mobile-menu');
     const mobileLinks = document.querySelectorAll('.mobile-menu a');
 
     if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', function() {
+        mobileMenuBtn.addEventListener('click', function () {
             this.classList.toggle('active');
             mobileMenu.classList.toggle('active');
-            
+
             // Toggle body scroll
             if (mobileMenu.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Close mobile menu when a link is clicked
     mobileLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function () {
             mobileMenuBtn.classList.remove('active');
             mobileMenu.classList.remove('active');
             document.body.style.overflow = '';
@@ -34,12 +34,12 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 const headerHeight = document.querySelector('.header').offsetHeight;
                 const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
-                
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -50,12 +50,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     /* FAQ Accordion */
     const faqQuestions = document.querySelectorAll('.faq-question');
-    
+
     faqQuestions.forEach(question => {
-        question.addEventListener('click', function() {
+        question.addEventListener('click', function () {
             this.classList.toggle('active');
             const answer = this.nextElementSibling;
-            
+
             if (this.classList.contains('active')) {
                 answer.style.maxHeight = answer.scrollHeight + 'px';
             } else {
@@ -66,18 +66,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
     /* Order Form Dummy Submission */
     const orderForm = document.getElementById('orderForm');
-    
+
     if (orderForm) {
-        orderForm.addEventListener('submit', function(e) {
+        orderForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Basic validation (HTML5 validation handles most)
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
-            
+
             if (name && email) {
-                alert('ご注文ありがとうございます。\n送信テスト完了です。\n\n実際にはこの後、確認メールが送信されます。');
+                // Create order object
+                const order = {
+                    id: 'ORD-' + Date.now(),
+                    date: new Date().toISOString(),
+                    status: '未発送',
+                    customer: {
+                        name: name,
+                        email: email,
+                        tel: document.getElementById('tel').value,
+                        address: document.getElementById('address').value
+                    },
+                    items: document.getElementById('product').value,
+                    message: document.getElementById('message').value
+                };
+
+                // Save to localStorage
+                let orders = JSON.parse(localStorage.getItem('nouen_orders')) || [];
+                orders.push(order);
+                localStorage.setItem('nouen_orders', JSON.stringify(orders));
+
+                alert('ご注文ありがとうございます。\n注文内容が保存されました。\n（デモ：管理画面で確認できます）');
                 orderForm.reset();
+            }
+        });
+    }
+
+    /* Admin Login */
+    const adminLoginBtn = document.getElementById('adminLoginBtn');
+    if (adminLoginBtn) {
+        adminLoginBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const password = prompt('管理者パスワードを入力してください:');
+            if (password === '1111') {
+                sessionStorage.setItem('isAdmin', 'true');
+                window.location.href = 'admin.html';
+            } else if (password !== null) {
+                alert('パスワードが違います。');
             }
         });
     }
